@@ -105,6 +105,12 @@ void __fastcall TGLForm2D::GLScene()
 glClear(GL_COLOR_BUFFER_BIT);
 
 // comandos para dibujar la escena
+glBegin(GL_QUADS);
+  glVertex2f(-50, 50);
+  glVertex2f(50, 50);
+  glVertex2f(50, -50);
+  glVertex2f(-50,-50);
+glEnd();
 
 glFlush();
 SwapBuffers(hdc);

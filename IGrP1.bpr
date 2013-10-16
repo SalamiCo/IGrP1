@@ -5,7 +5,7 @@
     <VERSION value="BCB.05.03"/>
     <PROJECT value="IGrP1.exe"/>
     <OBJFILES value="Main.obj UFP.obj"/>
-    <RESFILES value="Main.res"/>
+    <RESFILES value="IGrP1.res"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) UFP.dfm"/>
     <LIBFILES value=""/>
@@ -71,7 +71,7 @@ ProductVersion=1.0.0.0
 Comments=
 
 [Excluded Packages]
-C:\WINDOWS\system32\ibsmp50.bpl=Borland C++ InterBase Alerter Component
+C:\Windows\system32\ibsmp50.bpl=Borland C++ InterBase Alerter Component
 $(BCB)\Bin\dclsmpedit50.bpl=Borland Editor Script Enhancements
 
 [HistoryLists\hlIncludePath]
