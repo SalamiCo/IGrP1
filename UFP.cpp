@@ -30,6 +30,8 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     xRight=200.0; xLeft=-xRight;
     yTop=xRight; yBot=-yTop;
     //Radio del volumen de vista == 1
+    centroX = (xLeft + xRight) / 2.0;
+    centroY = (yTop + yBot) / 2.0;
 
     //inicialización del puerto de vista
     //ClientWidth=400;
@@ -80,13 +82,19 @@ void __fastcall TGLForm2D::FormResize(TObject *Sender)
 
   if (RatioVolVista>=RatioViewPort){
      //Aumentamos yTop-yBot
-     yTop= xRight/RatioViewPort;
-     yBot=-yTop;
+     //yTop= xRight/RatioViewPort;
+     //yBot=-yTop;
+    int nuevoAncho = (yTop-yBot)*RatioViewPort;
+    xLeft = centroX  - (nuevoAncho / 2.0);
+    xRight = centroX + (nuevoAncho / 2.0);
      }
   else{
      //Aumentamos xRight-xLeft
-     xRight=RatioViewPort*yTop;
-     xLeft=-xRight;
+     //xRight=RatioViewPort*yTop;
+     //xLeft=-xRight;
+    int nuevoAlto = (xLeft-xRight)*RatioViewPort;
+    yTop = centroY  - (nuevoAlto / 2.0);
+    yBot = centroY + (nuevoAlto / 2.0);
      }
 
   glMatrixMode(GL_PROJECTION);
