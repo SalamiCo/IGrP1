@@ -83,8 +83,7 @@ void __fastcall TGLForm2D::FormResize(TObject *Sender)
 
   if (RatioVolVista>=RatioViewPort){
      //Aumentamos yTop-yBot
-     //yTop= xRight/RatioViewPort;
-     //yBot=-yTop;
+     //Funciona si disminuimos la ventana, pero no al aumentar
     int nuevoAlto = (xLeft-xRight)*RatioViewPort;
     centroY = (yTop + yBot)/2.0;
     yTop = centroY  - (nuevoAlto / 2.0);
@@ -92,8 +91,7 @@ void __fastcall TGLForm2D::FormResize(TObject *Sender)
      }
   else{
      //Aumentamos xRight-xLeft
-     //xRight=RatioViewPort*yTop;
-     //xLeft=-xRight;
+     //Funciona si aumentamos la ventana, pero no al disminuir
     int nuevoAncho = (yTop-yBot)*RatioViewPort;
     centroX = (xLeft + xRight)/2.0;
     xLeft = centroX  - (nuevoAncho / 2.0);
