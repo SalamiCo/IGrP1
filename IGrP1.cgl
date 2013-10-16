@@ -1,0 +1,84 @@
+Functions called:
+ delete (35 times)
+ SysFreeMem (288 times)
+ SysGetMem (288 times)
+ realloc (1 times)
+ memcpy (1 times)
+ delete[] (2 times)
+ free (26 times)
+ new[] (14 times)
+ new (40 times)
+ calloc (5 times)
+ malloc (20 times)
+Resource types used:
+ object array (14 allocs, 13 max)
+ object (40 allocs, 28 max)
+ memory block (314 allocs, 228 max)
+Modules used:
+ 00400000 10/16/2013 11:43:38 C:\Users\Pedro Morgado\Pedro
+ Morgado\Otros\GitHub\IGrP1\IGrP1.exe
+ 0CD00000 01/31/2000 05:00:00 C:\Program Files
+ (x86)\Borland\CBuilder5\Bin\CG32.DLL
+ 10000000 11/16/2012 16:00:00 C:\Program Files (x86)\ATI
+ Technologies\HydraVision\HydraDMH.dll
+ 32500000 01/31/2000 05:00:00 C:\Program Files
+ (x86)\Borland\CBuilder5\Bin\CC3250MT.DLL
+ 40000000 01/24/2000 05:01:00 C:\Windows\system32\VCL50.BPL
+ 41000000 01/31/2000 05:00:00 C:\Program Files
+ (x86)\Borland\CBuilder5\Bin\BORLNDMM.DLL
+ 62A20000 07/14/2009 03:15:12 C:\Windows\system32\DDRAW.dll
+ 62B10000 07/14/2009 03:16:14 C:\Windows\system32\OPENGL32.dll
+ 62C40000 11/16/2012 21:39:52 C:\Windows\system32\atiadlxy.dll
+ 64C80000 07/04/2013 13:50:58
+ C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82
+.7601.18201_none_ec80f00e8593ece5\comctl32.dll
+ 68660000 11/16/2012 21:39:20 C:\Windows\system32\atigktxx.dll
+ 68680000 11/16/2012 21:39:32 C:\Windows\system32\atiglpxx.dll
+ 68690000 06/06/2013 06:50:58 C:\Windows\system32\DCIMAN32.dll
+ 686A0000 07/14/2009 03:15:24 C:\Windows\system32\GLU32.DLL
+ 68B00000 07/14/2009 03:16:14 C:\Windows\system32\oledlg.dll
+ 69030000 11/16/2012 22:17:54 C:\Windows\system32\atioglxx.dll
+ 6C510000 11/16/2012 22:50:54 C:\Windows\system32\aticfx32.dll
+ 71300000 07/14/2009 03:11:26 C:\Windows\system32\uxtheme.dll
+ 71810000 01/15/2011 16:52:26 C:\Windows\system32\winspool.drv
+ 72490000 07/14/2009 03:15:42 C:\Windows\system32\mpr.dll
+ 72740000 07/14/2009 03:16:22 C:\Windows\system32\wsock32.dll
+ 72780000 01/15/2011 16:51:54
+ C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.
+7601.17514_none_41e6975e2bd6f2b2\comctl32.DLL
+ 729B0000 07/14/2009 03:16:18 C:\Windows\system32\version.dll
+ 729C0000 07/14/2009 03:16:14 C:\Windows\system32\profapi.dll
+ 729D0000 01/15/2011 16:52:48 C:\Windows\system32\USERENV.dll
+ 73790000 01/15/2011 16:51:52 C:\Windows\system32\WTSAPI32.dll
+ 748A0000 07/14/2009 03:15:14 C:\Windows\system32\dwmapi.dll
+ 74E90000 07/14/2009 03:15:08 C:\Windows\syswow64\CRYPTBASE.dll
+ 74EA0000 08/24/2012 18:53:36 C:\Windows\syswow64\SspiCli.dll
+ 750C0000 07/14/2009 03:16:14 C:\Windows\SysWOW64\sechost.dll
+ 750E0000 05/24/2011 12:39:40 C:\Windows\syswow64\CFGMGR32.dll
+ 75270000 12/16/2011 09:53:00 C:\Windows\syswow64\msvcrt.dll
+ 75320000 01/15/2011 16:52:10 C:\Windows\syswow64\ole32.dll
+ 75720000 01/15/2011 16:51:38 C:\Windows\syswow64\SETUPAPI.dll
+ 758C0000 07/09/2013 06:46:32 C:\Windows\syswow64\CRYPT32.dll
+ 759F0000 01/15/2011 16:51:32 C:\Windows\syswow64\SHLWAPI.dll
+ 75A50000 07/14/2009 03:16:14 C:\Windows\syswow64\PSAPI.DLL
+ 75AB0000 01/15/2011 16:51:32 C:\Windows\syswow64\MSASN1.dll
+ 75AD0000 01/15/2011 16:52:36 C:\Windows\syswow64\GDI32.dll
+ 75B60000 06/06/2013 06:57:02 C:\Windows\syswow64\LPK.dll
+ 75B70000 08/29/2013 03:48:18 C:\Windows\syswow64\ADVAPI32.dll
+ 75C10000 05/24/2011 12:40:06 C:\Windows\syswow64\DEVOBJ.dll
+ 75C30000 01/15/2011 16:53:00 C:\Windows\system32\IMM32.DLL
+ 75CA0000 07/09/2013 06:52:12 C:\Windows\syswow64\WINTRUST.dll
+ 75CD0000 07/26/2013 03:56:00 C:\Windows\syswow64\SHELL32.dll
+ 76920000 07/09/2013 06:52:34 C:\Windows\syswow64\RPCRT4.dll
+ 76A30000 08/02/2013 03:50:42 C:\Windows\syswow64\kernel32.dll
+ 76B40000 01/15/2011 16:52:54 C:\Windows\syswow64\user32.dll
+ 76C40000 07/14/2009 03:15:44 C:\Windows\syswow64\MSCTF.dll
+ 76D10000 11/22/2012 06:45:04 C:\Windows\syswow64\USP10.dll
+ 76DB0000 01/15/2011 16:51:32 C:\Windows\syswow64\comdlg32.dll
+ 76E30000 07/14/2009 03:16:12 C:\Windows\syswow64\NSI.dll
+ 76E40000 01/15/2011 16:51:54 C:\Windows\syswow64\WS2_32.dll
+ 76E80000 07/14/2009 03:15:04 C:\Windows\syswow64\CLBCatQ.DLL
+ 76F10000 08/27/2011 06:26:28 C:\Windows\syswow64\oleaut32.dll
+ 76FA0000 08/02/2013 03:50:44 C:\Windows\syswow64\KERNELBASE.dll
+ 77450000 08/29/2013 03:50:32 C:\Windows\SysWOW64\ntdll.dll
+==========================================

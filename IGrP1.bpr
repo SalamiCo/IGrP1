@@ -3,9 +3,9 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.05.03"/>
-    <PROJECT value="glSkeleton.exe"/>
-    <OBJFILES value="glSkeleton.obj UFP.obj"/>
-    <RESFILES value="glSkeleton.res"/>
+    <PROJECT value="IGrP1.exe"/>
+    <OBJFILES value="IGrP1.obj UFP.obj"/>
+    <RESFILES value="Main.res"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) UFP.dfm"/>
     <LIBFILES value=""/>
@@ -24,7 +24,7 @@
     <LINKER value="tlink32"/>
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
-    <MAINSOURCE value="glSkeleton.cpp"/>
+    <MAINSOURCE value="Main.cpp"/>
     <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
     <LIBPATH value="$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
