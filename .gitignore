@@ -17,3 +17,6 @@
 *.exe
 *.tds
 *.cgl
+
+# Editors temporary files
+*~
