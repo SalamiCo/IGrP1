@@ -31,8 +31,8 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     yTop=xRight; yBot=-yTop;
     //Radio del volumen de vista == 1
     //Centro de la vista
-    centroX = (xLeft + xRight)/2.0;
-    centroY = (yTop + yBot)/2.0;
+    centerX = (xLeft + xRight)/2.0;
+    centerY = (yTop - yBot)/2.0;
 
     //inicialización del puerto de vista
     //ClientWidth=400;
@@ -72,8 +72,9 @@ void __fastcall TGLForm2D::FormResize(TObject *Sender)
      ClientWidth=400;
      ClientHeight=400;
      RatioViewPort=1.0;
-     }
-  else RatioViewPort= (float)ClientWidth/(float)ClientHeight;
+  } else {
+    RatioViewPort = (float)ClientWidth/(float)ClientHeight;
+  }
 
   glViewport(0,0,ClientWidth,ClientHeight);
 
@@ -81,26 +82,23 @@ void __fastcall TGLForm2D::FormResize(TObject *Sender)
   // para que su radio coincida con ratioViewPort
   GLfloat RatioVolVista=xRight/yTop;
 
-  if (RatioVolVista>=RatioViewPort){
-     //Aumentamos yTop-yBot
-     //Funciona si disminuimos la ventana, pero no al aumentar
-    int nuevoAlto = (xLeft-xRight)*RatioViewPort;
-    centroY = (yTop + yBot)/2.0;
-    yTop = centroY  - (nuevoAlto / 2.0);
-    yBot = centroY + (nuevoAlto / 2.0);
-     }
-  else{
-     //Aumentamos xRight-xLeft
-     //Funciona si aumentamos la ventana, pero no al disminuir
-    int nuevoAncho = (yTop-yBot)*RatioViewPort;
-    centroX = (xLeft + xRight)/2.0;
-    xLeft = centroX  - (nuevoAncho / 2.0);
-    xRight = centroX + (nuevoAncho / 2.0);
-     }
+  if (RatioViewPort >= RatioVolVista){
+    //Width ++
+    int newWidth = (yTop-yBot)*RatioViewPort;
+    centerX = (xLeft + xRight) / 2.0;
+    xLeft = centerX - (newWidth / 2.0);
+    xRight = centerX + (newWidth / 2.0);
+  } else {
+    //Width --
+    int newWidth = (yTop-yBot)*RatioViewPort;
+    centerX = (xLeft + xRight) / 2.0;
+    xLeft = centerX + (newWidth / 2.0);
+    xRight = centerX - (newWidth / 2.0);
+  }
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluOrtho2D(xLeft,xRight, yBot,yTop);
+  gluOrtho2D(xLeft,xRight,yBot,yTop);
 
 
   glMatrixMode(GL_MODELVIEW);
