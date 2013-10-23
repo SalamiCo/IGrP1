@@ -28,7 +28,7 @@ private:	// User declarations
  //guarda el radio del puerto de vista
  GLfloat RatioViewPort;
  //Variable para guardar el centro de la escena
- GLfloat centroX, centroY;
+ GLfloat centerX, centerY;
  // métodos privados
  void __fastcall SetPixelFormatDescriptor();
  void __fastcall GLScene();
