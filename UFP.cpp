@@ -30,9 +30,6 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     xRight=200.0; xLeft=-xRight;
     yTop=xRight; yBot=-yTop;
     //Radio del volumen de vista == 1
-    //Centro de la vista
-    //centerX = (xLeft + xRight)/2.0;
-    //centerY = (yTop - yBot)/2.0;
 
     //inicialización del puerto de vista
     //ClientWidth=400;
@@ -40,6 +37,7 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     RatioViewPort=1.0;
 
     // inicialización de las variables del programa
+    displacementeIncrease = 10;
 }
 //---------------------------------------------------------------------------
 void __fastcall TGLForm2D::SetPixelFormatDescriptor()
@@ -75,37 +73,9 @@ void __fastcall TGLForm2D::FormResize(TObject *Sender)
 
   glViewport(0,0,ClientWidth,ClientHeight);
 
-  // se actualiza el volumen de vista
-  // para que su radio coincida con ratioViewPort
- //GLfloat RatioVolVista=xRight/yTop;
-
-  /*if (RatioViewPort >= RatioVolVista){
-    //Width ++
-    int newWidth = (yTop - yBot)*RatioViewPort;
-    centerX = (xLeft + xRight) / 2.0;
-    xLeft = centerX - (newWidth / 2.0);
-    xRight = centerX + (newWidth / 2.0);
-    //Heigth --
-    /*int newHeigth = (xRight - xLeft)*RatioViewPort;
-    centerY = (yBot + yTop) / 2.0;
-    yBot = centerY + (newHeigth / 2.0);
-    yTop = centerY - (newHeigth / 2.0);
-  } else {
-    //Width --
-    int newWidth = (yTop - yBot)*RatioViewPort;
-    centerX = (xLeft + xRight) / 2.0;
-    xLeft = centerX + (newWidth / 2.0);
-    xRight = centerX - (newWidth / 2.0);
-    //Heigth ++
-    /*int newHeigth = (xRight-xLeft)*RatioViewPort;
-    centerY = (yBot + yTop) / 2.0;
-    yBot = centerY - (newHeigth / 2.0);
-    yTop = centerY + (newHeigth / 2.0);
-  }*/
-
   centerX = (xLeft + xRight) / 2.0;
-  xLeft = centerX + (ClientWidth / 2.0);
-  xRight = centerX - (ClientWidth / 2.0);
+  xLeft = centerX - (ClientWidth / 2.0);
+  xRight = centerX + (ClientWidth / 2.0);
 
   centerY = (yBot + yTop) / 2.0;
   yBot = centerY - (ClientHeight / 2.0);
@@ -146,6 +116,40 @@ void __fastcall TGLForm2D::FormDestroy(TObject *Sender)
     wglMakeCurrent(NULL, NULL);
     wglDeleteContext(hrc);
     // eliminar objetos creados
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
+{
+  switch(Key){
+    //Left
+    case 'a':
+      xLeft += displacementeIncrease;
+      xRight += displacementeIncrease;
+      break;
+    //Up
+    case 'w':
+      yBot -= displacementeIncrease;
+      yTop -= displacementeIncrease;
+      break;
+    //Down
+    case 's':
+      yBot += displacementeIncrease;
+      yTop += displacementeIncrease;
+      break;
+    //Right
+    case 'd':
+      xLeft -= displacementeIncrease;
+      xRight -= displacementeIncrease;
+      break;
+  };
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  gluOrtho2D(xLeft,xRight,yBot,yTop);
+
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+  GLScene();
 }
 //---------------------------------------------------------------------------
 
