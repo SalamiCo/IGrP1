@@ -38,6 +38,7 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
 
     // inicialización de las variables del programa
     displacementeIncrease = 10;
+    acumulateZoom = 1;
 }
 //---------------------------------------------------------------------------
 void __fastcall TGLForm2D::SetPixelFormatDescriptor()
@@ -74,12 +75,12 @@ void __fastcall TGLForm2D::FormResize(TObject *Sender)
   glViewport(0,0,ClientWidth,ClientHeight);
 
   centerX = (xLeft + xRight) / 2.0;
-  xLeft = centerX - (ClientWidth / 2.0);
-  xRight = centerX + (ClientWidth / 2.0);
+  xLeft = centerX - ((ClientWidth*acumulateZoom) / 2.0);
+  xRight = centerX + ((ClientWidth*acumulateZoom) / 2.0);
 
   centerY = (yBot + yTop) / 2.0;
-  yBot = centerY - (ClientHeight / 2.0);
-  yTop = centerY + (ClientHeight / 2.0);
+  yBot = centerY - ((ClientHeight*acumulateZoom) / 2.0);
+  yTop = centerY + ((ClientHeight*acumulateZoom) / 2.0);
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
@@ -121,6 +122,7 @@ void __fastcall TGLForm2D::FormDestroy(TObject *Sender)
 
 void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
 {
+  GLdouble f = 0.9;
   switch(Key){
     //Left
     case 'a':
@@ -141,6 +143,23 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
     case 'd':
       xLeft -= displacementeIncrease;
       xRight -= displacementeIncrease;
+      break;
+
+    //Zoom ++
+    case '+':
+      xLeft *= f;
+      xRight *= f;
+      yBot *= f;
+      yTop *= f;
+      acumulateZoom *= f;
+      break;
+    //Zoom --
+    case '-':
+      xLeft /= f;
+      xRight /= f;
+      yBot /= f;
+      yTop /= f;
+      acumulateZoom /= f;
       break;
   };
   glMatrixMode(GL_PROJECTION);

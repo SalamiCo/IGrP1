@@ -32,6 +32,8 @@ private:	// User declarations
  GLfloat centerX, centerY;
  //Displacement increase
  GLfloat displacementeIncrease;
+ //Acumulate zoom
+ GLfloat acumulateZoom;
  // métodos privados
  void __fastcall SetPixelFormatDescriptor();
  void __fastcall GLScene();
