@@ -19,6 +19,7 @@ __published:	// IDE-managed Components
   void __fastcall FormResize(TObject *Sender);
   void __fastcall FormPaint(TObject *Sender);
   void __fastcall FormDestroy(TObject *Sender);
+        void __fastcall FormKeyPress(TObject *Sender, char &Key);
 
 private:	// User declarations
  HDC hdc;
@@ -29,6 +30,10 @@ private:	// User declarations
  GLfloat RatioViewPort;
  //Variable para guardar el centro de la escena
  GLfloat centerX, centerY;
+ //Displacement increase
+ GLfloat displacementeIncrease;
+ //Acumulate zoom
+ GLfloat acumulateZoom;
  // métodos privados
  void __fastcall SetPixelFormatDescriptor();
  void __fastcall GLScene();
