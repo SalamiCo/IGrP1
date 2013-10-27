@@ -1,7 +1,7 @@
 #ifndef TreeH
 #define TreeH
 
-#include <vector.h>
+#include <vector>
 #include "Square.h"
 
 class Tree{
