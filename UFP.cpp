@@ -36,6 +36,9 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     //ClientHeight=400;
     RatioViewPort=1.0;
 
+    //Scene inicialization
+    this->tree = Tree();
+
     // inicialización de las variables del programa
     displacementeIncrease = 10;
     acumulateZoom = 1;
@@ -98,9 +101,8 @@ void __fastcall TGLForm2D::GLScene()
 glClear(GL_COLOR_BUFFER_BIT);
 
 // comandos para dibujar la escena
+//glRectf(-100,-100,100,100);
 
-//glRectf((xLeft-xRight)/4.0,(yBot-yTop)/4.0,(xRight-xLeft)/4.0,(yTop-yBot)/4.0);
-glRectf(-100,-100,100,100);
 glFlush();
 SwapBuffers(hdc);
 }
@@ -161,7 +163,12 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
       yTop /= f;
       acumulateZoom /= f;
       break;
+    //Tree++
+    case 'z':
+      tree.drawNextLevel();
+      break;
   };
+
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluOrtho2D(xLeft,xRight,yBot,yTop);

@@ -11,6 +11,8 @@
 #include <gl\gl.h>
 #include <gl\glu.h>
 
+#include "Tree.h"
+
 //---------------------------------------------------------------------------
 class TGLForm2D : public TForm
 {
@@ -19,7 +21,7 @@ __published:	// IDE-managed Components
   void __fastcall FormResize(TObject *Sender);
   void __fastcall FormPaint(TObject *Sender);
   void __fastcall FormDestroy(TObject *Sender);
-        void __fastcall FormKeyPress(TObject *Sender, char &Key);
+  void __fastcall FormKeyPress(TObject *Sender, char &Key);
 
 private:	// User declarations
  HDC hdc;
@@ -34,6 +36,9 @@ private:	// User declarations
  GLfloat displacementeIncrease;
  //Acumulate zoom
  GLfloat acumulateZoom;
+//Scene variable
+ Tree tree;
+
  // métodos privados
  void __fastcall SetPixelFormatDescriptor();
  void __fastcall GLScene();
