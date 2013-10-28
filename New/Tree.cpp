@@ -3,14 +3,14 @@
 
 Tree::Tree(){
 	//this->next = new Vector<Square>();
-	Square* firstSquare = new Square(new Point(50,-50),
-                                        new Point(-50,-50),
-                                        new Point(-50,50),
-                                        new Point(50,50));
-        Square* secondSquare = new Square(new Point(50,50),
-                                        new Point(25,75),
-                                        new Point(50,100),
-                                        new Point(75,75));
+	Square firstSquare = Square(PointCoord(50,-50),
+                                        PointCoord(-50,-50),
+                                        PointCoord(-50,50),
+                                        PointCoord(50,50));
+        Square secondSquare = Square(PointCoord(50,50),
+                                        PointCoord(25,75),
+                                        PointCoord(50,100),
+                                        PointCoord(75,75));
 	this->next.push_back(firstSquare);
         this->next.push_back(secondSquare);
 	//this->archive = new Vector<Square>();
@@ -27,7 +27,7 @@ void Tree::DrawNextLevel(){
                         glVertex2f((*i)->GetX4()->GetX(),(*i)->GetX4()->GetY());
                 glEnd();
         }*/
-        Pencil pen = new Pencil();
+        Pencil pen = Pencil();
         
 }
  

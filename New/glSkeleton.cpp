@@ -6,7 +6,7 @@ USERES("glSkeleton.res");
 USEFORM("UFP.cpp", GLForm2D);
 USEUNIT("Tree.cpp");
 USEUNIT("Square.cpp");
-USEUNIT("Point.cpp");
+USEUNIT("PointCoord.cpp");
 USEUNIT("Pencil.cpp");
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
