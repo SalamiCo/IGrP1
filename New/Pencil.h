@@ -7,7 +7,7 @@
 class Pencil{
 	private:
 		Point *pos;
-		GLdouble dir,x,y;
+		GLdouble dir;
 	public:
 		Pencil();
 		Pencil(Point *p, GLdouble dir);

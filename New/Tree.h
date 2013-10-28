@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Square.h"
+#include "Pencil.h"
 
 class Tree{
 	private:

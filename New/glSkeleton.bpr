@@ -75,14 +75,16 @@ C:\Windows\system32\ibsmp50.bpl=Borland C++ InterBase Alerter Component
 $(BCB)\Bin\dclsmpedit50.bpl=Borland Editor Script Enhancements
 
 [HistoryLists\hlIncludePath]
-Count=2
-Item0=C:\Program Files (x86)\Borland\CBuilder5\Projects;$(BCB)\include;$(BCB)\include\vcl
-Item1=$(BCB)\include;$(BCB)\include\vcl
+Count=3
+Item0=C:\Program Files (x86)\Borland\CBuilder5\Projects\;$(BCB)\include;$(BCB)\include\vcl
+Item1=C:\Program Files (x86)\Borland\CBuilder5\Projects;$(BCB)\include;$(BCB)\include\vcl
+Item2=$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=2
-Item0=C:\Program Files (x86)\Borland\CBuilder5\Projects;$(BCB)\lib\obj;$(BCB)\lib
-Item1=$(BCB)\lib\obj;$(BCB)\lib
+Count=3
+Item0=C:\Program Files (x86)\Borland\CBuilder5\Projects\;$(BCB)\lib\obj;$(BCB)\lib
+Item1=C:\Program Files (x86)\Borland\CBuilder5\Projects;$(BCB)\lib\obj;$(BCB)\lib
+Item2=$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1

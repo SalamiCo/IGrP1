@@ -1,3 +1,4 @@
+
 #include "Tree.h"
 
 Tree::Tree(){
@@ -17,7 +18,7 @@ Tree::Tree(){
 
 void Tree::DrawNextLevel(){
         //Iterator
-        std::vector<Square*>::iterator i;
+        /*std::vector<Square*>::iterator i;
         for(i=this->next.begin(); i!=this->next.end(); ++i){
                 glBegin(GL_POLYGON);
                         glVertex2f((*i)->GetX1()->GetX(),(*i)->GetX1()->GetY());
@@ -25,7 +26,8 @@ void Tree::DrawNextLevel(){
                         glVertex2f((*i)->GetX3()->GetX(),(*i)->GetX3()->GetY());
                         glVertex2f((*i)->GetX4()->GetX(),(*i)->GetX4()->GetY());
                 glEnd();
-        }
-
+        }*/
+        Pencil pen = new Pencil();
+        
 }
  

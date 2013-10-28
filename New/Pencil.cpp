@@ -30,4 +30,9 @@ void Pencil::Turn(GLdouble d){
 void Pencil::Forward(GLdouble dist){
 	x += dist*cos(this->dir);
 	y += dist*sin(this->dir);
+        this->pos->SetX(x);
+        this->pos->SetY(y);
+        glVertex2f(x,y);
+        
 }
+
