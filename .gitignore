@@ -19,4 +19,4 @@
 *.cgl
 
 # Editors temporary files
-*.~
+*.~*
