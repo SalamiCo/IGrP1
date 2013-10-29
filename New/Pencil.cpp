@@ -33,6 +33,5 @@ void Pencil::Forward(GLdouble dist){
         this->pos->SetX(x);
         this->pos->SetY(y);
         glVertex2f(x,y);
-        
 }
 
