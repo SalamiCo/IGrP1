@@ -11,7 +11,7 @@ Tree::Tree(){
 }
 
 void Tree::DrawNextLevel(){
-        std::vector<Square>::iterator i;
+        std::list<Square>::iterator i;
         for(i=this->archive.begin(); i!=this->archive.end(); ++i){
                 glBegin(GL_QUADS);
                         glColor3f(1.0,0.0,0.0); //Red
@@ -40,8 +40,8 @@ void Tree::DrawNextLevel(){
 
 void Tree::AddNextLevel(){
         Pencil pen;
-        std::vector<Square>::iterator level;
-        std::vector<Square>::iterator stop;
+        std::list<Square>::iterator level;
+        std::list<Square>::iterator stop;
         stop = this->next.end();
         for(level=this->next.begin(); level!=stop; ++level){
 

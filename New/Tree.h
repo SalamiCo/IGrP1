@@ -1,14 +1,14 @@
 #ifndef TreeH
 #define TreeH
 
-#include <vector>
+#include <list>
 #include <iostream>
 #include "Square.h"
 #include "Pencil.h"
 
 class Tree{
 	private:
-		std::vector<Square> next, archive;
+		std::list<Square> next, archive;
 	public:
 		Tree();
 		void DrawNextLevel();
