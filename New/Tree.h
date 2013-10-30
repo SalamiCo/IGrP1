@@ -2,6 +2,7 @@
 #define TreeH
 
 #include <vector>
+#include <iostream>
 #include "Square.h"
 #include "Pencil.h"
 
@@ -11,6 +12,7 @@ class Tree{
 	public:
 		Tree();
 		void DrawNextLevel();
+		void AddNextLevel();
 };
 
 #endif

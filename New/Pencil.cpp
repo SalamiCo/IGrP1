@@ -22,6 +22,10 @@ GLdouble Pencil::GetDir(){
 	return this->dir;
 }
 
+PointCoord Pencil::GetPos(){
+	return this->pos;
+}
+
 void Pencil::Turn(GLdouble d){
 	//d>0 -> left, d<0 -> right
 	this->dir += d;
@@ -30,8 +34,8 @@ void Pencil::Turn(GLdouble d){
 void Pencil::Forward(GLdouble dist){
 	GLdouble x = dist*cos(this->dir);
 	GLdouble y = dist*sin(this->dir);
-    this->pos.SetX(x);
-    this->pos.SetY(y);
-    glVertex2f(x,y);       
+    this->pos.SetX(pos.GetX() + x);
+    this->pos.SetY(pos.GetY() + y);
+    //glVertex2f(x,y);       
 }
 

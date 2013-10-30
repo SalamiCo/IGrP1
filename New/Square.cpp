@@ -22,4 +22,14 @@ PointCoord Square::GetX3(){
 PointCoord Square::GetX4(){
     return this->x4;
 }
+
+GLdouble Square::GetEdge(){
+	GLdouble dx = this->x1.GetX()-this->x2.GetX();
+	GLdouble dy = this->x1.GetY()-this->x2.GetY();
+	return sqrt(dx*dx + dy*dy);
+}
+
+GLdouble Square::GetAngle(){
+	return atan2(this->x1.GetY() - this->x2.GetY(), this->x1.GetX() - this->x2.GetX());
+}
  

@@ -103,7 +103,6 @@ glClear(GL_COLOR_BUFFER_BIT);
 // comandos para dibujar la escena
 //glRectf(-100,-100,100,100);
 tree.DrawNextLevel();
-
 glFlush();
 SwapBuffers(hdc);
 }
@@ -126,6 +125,7 @@ void __fastcall TGLForm2D::FormDestroy(TObject *Sender)
 void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
 {
   GLdouble f = 0.9;
+  GLdouble width, height, centerX, centerY;
   switch(Key){
     //Left
     case 'a':
@@ -150,6 +150,10 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
 
     //Zoom ++
     case '+':
+      /*width = xRight - xLeft;
+      height = yTop - yBot;
+      centerX = (xRight + xLeft) / 2;
+      centerY = (yTop + yBot) / 2;*/
       xLeft *= f;
       xRight *= f;
       yBot *= f;
@@ -166,8 +170,7 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
       break;
     //Tree++
     case 'z':
-      //tree.DrawNextLevel(hdc);
-      GLScene();
+      tree.AddNextLevel();
       break;
   };
 

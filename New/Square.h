@@ -2,6 +2,7 @@
 #define SquareH
 
 #include "PointCoord.h"
+#include <math.h>
 
 class Square{
 	private:
@@ -13,6 +14,8 @@ class Square{
         PointCoord GetX2();
         PointCoord GetX3();
         PointCoord GetX4();
+        GLdouble GetEdge();
+        GLdouble GetAngle();
 };
 
 #endif

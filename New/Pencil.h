@@ -14,6 +14,7 @@ class Pencil{
 		void SetPos(PointCoord p);
 		void SetDir(GLdouble d);
 		GLdouble GetDir();
+		PointCoord GetPos();
         void Turn(GLdouble d);
         void Forward(GLdouble dist);
 };
