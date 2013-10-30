@@ -1,16 +1,16 @@
 #include "Pencil.h"
 
 Pencil::Pencil(){
-	this->pos = new Point();
+	this->pos = PointCoord();
 	this->dir = 0;
 }
 
-Pencil::Pencil(Point *p, GLdouble dir){
+Pencil::Pencil(PointCoord p, GLdouble dir){
 	this->pos = p;
 	this->dir = dir;
 }
 
-void Pencil::SetPos(Point *p){
+void Pencil::SetPos(PointCoord p){
 	this->pos = p;
 }
 
@@ -28,10 +28,10 @@ void Pencil::Turn(GLdouble d){
 } 
 
 void Pencil::Forward(GLdouble dist){
-	x += dist*cos(this->dir);
-	y += dist*sin(this->dir);
-        this->pos->SetX(x);
-        this->pos->SetY(y);
-        glVertex2f(x,y);
+	GLdouble x = dist*cos(this->dir);
+	GLdouble y = dist*sin(this->dir);
+    this->pos.SetX(x);
+    this->pos.SetY(y);
+    glVertex2f(x,y);       
 }
 

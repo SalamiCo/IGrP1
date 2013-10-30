@@ -1,21 +1,21 @@
 #ifndef PencilH
 #define PencilH
 
-#include "Point.h"
+#include "PointCoord.h"
 #include <math.h>
 
 class Pencil{
 	private:
-		Point *pos;
+		PointCoord pos;
 		GLdouble dir;
 	public:
 		Pencil();
-		Pencil(Point *p, GLdouble dir);
-		void SetPos(Point *p);
+		Pencil(PointCoord p, GLdouble dir);
+		void SetPos(PointCoord p);
 		void SetDir(GLdouble d);
 		GLdouble GetDir();
-                void Turn(GLdouble d);
-                void Forward(GLdouble dist);
+        void Turn(GLdouble d);
+        void Forward(GLdouble dist);
 };
 
 #endif

@@ -7,7 +7,7 @@
 
 class Tree{
 	private:
-		std::vector<Square*> next, archive;
+		std::vector<Square> next, archive;
 	public:
 		Tree();
 		void DrawNextLevel();
