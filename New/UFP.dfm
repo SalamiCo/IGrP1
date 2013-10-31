@@ -14,6 +14,7 @@ object GLForm2D: TGLForm2D
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
+  OnMouseDown = FormMouseDown
   OnPaint = FormPaint
   OnResize = FormResize
   PixelsPerInch = 96

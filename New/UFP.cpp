@@ -101,7 +101,6 @@ void __fastcall TGLForm2D::GLScene()
 glClear(GL_COLOR_BUFFER_BIT);
 
 // comandos para dibujar la escena
-//glRectf(-100,-100,100,100);
 tree.DrawNextLevel();
 glFlush();
 SwapBuffers(hdc);
@@ -184,4 +183,26 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TGLForm2D::FormMouseDown(TObject *Sender,
+      TMouseButton Button, TShiftState Shift, int X, int Y)
+{
+  // (0,0) is in up-left corner. X grows to the right, Y to the bottom
+  //ShowMessage("Mouse at (" + IntToStr(X) + ", " + IntToStr(Y) + ")");
+  
+  int newX, newY;
+  newX = X - xRight;
+  newY = yTop - Y;
+  //ShowMessage("Clicked at (" + IntToStr(newX) + ", " + IntToStr(newY) + ")");
+
+  this->tree = Tree(newX, newY);
+
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  gluOrtho2D(xLeft,xRight,yBot,yTop);
+
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+  GLScene();
+}
+//---------------------------------------------------------------------------
 

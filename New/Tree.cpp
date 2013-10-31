@@ -10,6 +10,15 @@ Tree::Tree(){
 	this->next.push_back(firstSquare);
 }
 
+Tree::Tree(int X, int Y){
+
+        Square newSquare = Square(PointCoord(X+50,Y+50),
+                                        PointCoord(X-50,Y+50),
+                                        PointCoord(X-50,Y-50),
+                                        PointCoord(X+50,Y-50));
+        this->next.push_back(newSquare);
+}
+
 void Tree::DrawNextLevel(){
         std::vector<Square>::iterator i;
         for(i=this->archive.begin(); i!=this->archive.end(); ++i){
@@ -40,29 +49,37 @@ void Tree::DrawNextLevel(){
 
 void Tree::AddNextLevel(){
         Pencil pen;
-        this->next.reserve(this->next.size()*3);
         std::vector<Square>::iterator level;
         std::vector<Square>::iterator stop;
+        GLdouble distance;
+
+        this->next.reserve(this->next.size()*3);
+
+        // Last Square of the current level
         stop = this->next.end();
+
         for(level=this->next.begin(); level!=stop; ++level){
+
+                //Calculate the distance for the pencil to move
+                distance = level->GetEdge()*cos(M_PI_4);
 
                 //First square
                 PointCoord p1 (level->GetX1().GetX(), level->GetX1().GetY());
                 pen.SetPos(p1);
                 pen.SetDir(level->GetAngle() + M_PI_4);
-                pen.Forward(level->GetEdge()*cos(M_PI_4));
+                pen.Forward(distance);
 
                 PointCoord p2 = pen.GetPos();
                 pen.Turn(M_PI_2);
-                pen.Forward(level->GetEdge()*cos(M_PI_4));
+                pen.Forward(distance);
 
                 PointCoord p3 = pen.GetPos();
                 pen.Turn(M_PI_2);
-                pen.Forward(level->GetEdge()*cos(M_PI_4));
+                pen.Forward(distance);
 
                 PointCoord p4 = pen.GetPos();
                 pen.Turn(M_PI_2);
-                pen.Forward(level->GetEdge()*cos(M_PI_4));
+                pen.Forward(distance);
 
                 Square s1 = Square(p2,p3,p4,p1);
                 this->next.push_back(s1);
@@ -73,26 +90,28 @@ void Tree::AddNextLevel(){
 
                 PointCoord p5 = pen.GetPos();
                 pen.Turn(-M_PI_2 - M_PI_4);
-                pen.Forward(level->GetEdge()*cos(M_PI_4));
+                pen.Forward(distance);
 
                 PointCoord p6 = pen.GetPos();
                 pen.Turn(M_PI_2);
-                pen.Forward(level->GetEdge()*cos(M_PI_4));
+                pen.Forward(distance);
 
                 PointCoord p7 = pen.GetPos();
                 pen.Turn(M_PI_2);
-                pen.Forward(level->GetEdge()*cos(M_PI_4));
+                pen.Forward(distance);
 
                 PointCoord p8 = pen.GetPos();
                 pen.Turn(M_PI_2);
-                pen.Forward(level->GetEdge()*cos(M_PI_4));
+                pen.Forward(distance);
 
                 Square s2 = Square(p7,p8,p5,p6);
                 this->next.push_back(s2);
 
+                // Save the current level in list 'archive'
                 this->archive.push_back(*level);
         }
 
+        // Delete the current level from list 'next'
         this->next.erase(this->next.begin(), stop);
 }
  

@@ -11,6 +11,7 @@ class Tree{
 		std::vector<Square> next, archive;
 	public:
 		Tree();
+		Tree(int X,int Y);
 		void DrawNextLevel();
 		void AddNextLevel();
 };
