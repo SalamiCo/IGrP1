@@ -150,23 +150,29 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
 
     //Zoom ++
     case '+':
-      /*width = xRight - xLeft;
+      width = xRight - xLeft;
       height = yTop - yBot;
       centerX = (xRight + xLeft) / 2;
-      centerY = (yTop + yBot) / 2;*/
-      xLeft *= f;
-      xRight *= f;
-      yBot *= f;
-      yTop *= f;
+      centerY = (yTop + yBot) / 2;
       acumulateZoom *= f;
+
+      xLeft = (centerX-width*f/2);
+      xRight = (centerX+width*f/2);
+      yBot = (centerY-height*f/2);
+      yTop = (centerY+height*f/2);
       break;
     //Zoom --
     case '-':
-      xLeft /= f;
-      xRight /= f;
-      yBot /= f;
-      yTop /= f;
-      acumulateZoom /= f;
+      width = xRight - xLeft;
+      height = yTop - yBot;
+      centerX = (xRight + xLeft) / 2;
+      centerY = (yTop + yBot) / 2;
+      acumulateZoom *= f;
+
+      xLeft = (centerX-width/f/2);
+      xRight = (centerX+width/f/2);
+      yBot = (centerY-height/f/2);
+      yTop = (centerY+height/f/2);
       break;
     //Tree++
     case 'z':
