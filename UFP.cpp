@@ -197,8 +197,15 @@ void __fastcall TGLForm2D::FormMouseDown(TObject *Sender,
             // (0,0) is in up-left corner. X grows to the right, Y to the bottom
             //ShowMessage("Mouse at (" + IntToStr(X) + ", " + IntToStr(Y) + ")");
             int newX, newY;
-            newX = X - xRight;
-            newY = yTop - Y;
+            GLdouble scaleWidth, scaleHeight;
+
+            scaleWidth = ClientWidth/(xRight - xLeft);
+            scaleHeight = ClientHeight/(yTop - yBot);
+
+            newX = (int) (X + xLeft)/scaleWidth;
+            newY = (int) (yTop - Y)/scaleHeight;
+
+
             //ShowMessage("Clicked at (" + IntToStr(newX) + ", " + IntToStr(newY) + ")");
             this->tree = Tree(newX, newY);
             break;
