@@ -15,6 +15,7 @@ class Square{
                 PointCoord GetP4();
                 GLdouble GetEdge();
                 GLdouble GetAngle();
+                void DrawSquare(PointCoord p1, PointCoord p2, PointCoord p3, PointCoord p4);
 };
 
 #endif

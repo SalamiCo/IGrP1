@@ -13,29 +13,13 @@ Tree::Tree(int X, int Y){
 
 void Tree::DrawNextLevel(){
     std::vector<Square>::iterator i;
+    
     for(i=this->archive.begin(); i!=this->archive.end(); ++i){
-        glBegin(GL_QUADS);
-            glColor3f(1.0,0.0,0.0); //Red
-            glVertex2f( i->GetP1().GetX(), i->GetP1().GetY());
-            glColor3f(0.0,1.0,0.0); //Green
-            glVertex2f( i->GetP2().GetX(), i->GetP2().GetY());
-            glColor3f(0.0,0.0,1.0); //Blue
-            glVertex2f( i->GetP3().GetX(), i->GetP3().GetY());
-            glColor3f(1.0,0.0,1.0); //Purple
-            glVertex2f( i->GetP4().GetX(), i->GetP4().GetY());
-        glEnd();
+        i->DrawSquare(i->GetP1(), i->GetP2(), i->GetP3(), i->GetP4());
     }
+
     for(i=this->next.begin(); i!=this->next.end(); ++i){
-        glBegin(GL_QUADS);
-            glColor3f(1.0,0.0,0.0); //Red
-            glVertex2f( i->GetP1().GetX(), i->GetP1().GetY());
-            glColor3f(0.0,1.0,0.0); //Green
-            glVertex2f( i->GetP2().GetX(), i->GetP2().GetY());
-            glColor3f(0.0,0.0,1.0); //Blue
-            glVertex2f( i->GetP3().GetX(), i->GetP3().GetY());
-            glColor3f(1.0,0.0,1.0); //Purple
-            glVertex2f( i->GetP4().GetX(), i->GetP4().GetY());
-        glEnd();
+        i->DrawSquare(i->GetP1(), i->GetP2(), i->GetP3(), i->GetP4());      
     }
 }
 
