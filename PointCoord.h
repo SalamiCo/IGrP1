@@ -16,6 +16,7 @@ class PointCoord{
         GLdouble GetY();
         void SetX(GLdouble x);
         void SetY(GLdouble y);
+        bool PointCoordEqual(GLdouble x, GLdouble y);
 };
 
 #endif

@@ -1,6 +1,8 @@
 #ifndef TreeH
 #define TreeH
 
+#define DOUBLE_MAX 1.7976931348623158e+308 /* max value */
+
 #include <vector>
 #include <iostream>
 #include <math.h>
@@ -13,9 +15,10 @@ class Tree{
 	public:
 		Tree();
 		Tree(int X,int Y);
-		void DrawNextLevel();
-		void AddNextLevel();
+		void DrawTree(Square selectedSquare);
+		void AddLevel();
 		void UndoLevel();
+		Square SelectSquare(int x, int y);
 };
 
 #endif

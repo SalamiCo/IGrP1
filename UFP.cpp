@@ -20,9 +20,9 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     SetPixelFormatDescriptor();
     hrc = wglCreateContext(hdc);
     if(hrc == NULL)
-    	ShowMessage(":-)~ hrc == NULL");
+        ShowMessage(":-)~ hrc == NULL");
     if(wglMakeCurrent(hdc, hrc) == false)
-    	ShowMessage("Could not MakeCurrent");
+        ShowMessage("Could not MakeCurrent");
     //Cor de fondo de la ventana
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
@@ -47,7 +47,7 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
 void __fastcall TGLForm2D::SetPixelFormatDescriptor()
 {
     PIXELFORMATDESCRIPTOR pfd = {
-    	sizeof(PIXELFORMATDESCRIPTOR),
+        sizeof(PIXELFORMATDESCRIPTOR),
         1,
         PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER,
         PFD_TYPE_RGBA,
@@ -98,7 +98,7 @@ void __fastcall TGLForm2D::GLScene()
     glClear(GL_COLOR_BUFFER_BIT);
 
     // Draw the scene
-    tree.DrawNextLevel();
+    tree.DrawTree(selectedSquare);
 
     glFlush();
     SwapBuffers(hdc);
@@ -174,7 +174,7 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
 
     //Tree ++
     case 'z':
-        tree.AddNextLevel();
+        tree.AddLevel();
         break;
 
     // Tree--
@@ -210,6 +210,7 @@ void __fastcall TGLForm2D::FormMouseDown(TObject *Sender,
 
         //Right button
         case 1:
+            selectedSquare = tree.SelectSquare(X,Y);
             break;
     };
 

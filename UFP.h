@@ -34,6 +34,8 @@ private:	// User declarations
 	GLfloat acumulateZoom;
 	//Tree variable
  	Tree tree;
+ 	//Square selected
+ 	Square selectedSquare;
 
  	// Private methods
  	void __fastcall SetPixelFormatDescriptor();

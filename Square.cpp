@@ -1,5 +1,13 @@
 #include "Square.h"
 
+Square::Square(){
+	this->p1 = PointCoord();
+	this->p2 = PointCoord();
+	this->p3 = PointCoord();
+	this->p4 = PointCoord();
+	this->currLevel = 0;
+}
+
 Square::Square(PointCoord p1, PointCoord p2, PointCoord p3, PointCoord p4, int currLevel){
 	this->p1 = p1;
 	this->p2 = p2;
@@ -49,5 +57,9 @@ void Square::DrawSquare(PointCoord p1, PointCoord p2, PointCoord p3, PointCoord 
         glColor3f(1.0,0.0,1.0); //Purple
         glVertex2f( p4.GetX(), p4.GetY());
     glEnd();
+}
+
+bool Square::SquareEqual(PointCoord p1, PointCoord p2, PointCoord p3, PointCoord p4){
+	return (this->p1.PointCoordEqual(p1.GetX(), p1.GetY()) && this->p2.PointCoordEqual(p2.GetX(), p2.GetY()), this->p3.PointCoordEqual(p3.GetX(), p3.GetY()) && this->p4.PointCoordEqual(p4.GetX(), p4.GetY()));
 }
  

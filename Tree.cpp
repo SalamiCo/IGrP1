@@ -11,11 +11,20 @@ Tree::Tree(int X, int Y){
     this->next.push_back(newSquare);
 }
 
-void Tree::DrawNextLevel(){
+void Tree::DrawTree(Square selectedSquare){
     std::vector<Square>::iterator i;
-
     for(i=this->archive.begin(); i!=this->archive.end(); ++i){
-        i->DrawSquare(i->GetP1(), i->GetP2(), i->GetP3(), i->GetP4());
+        if((*i).SquareEqual(selectedSquare.GetP1(), selectedSquare.GetP2(), selectedSquare.GetP3(), selectedSquare.GetP4())){
+            glBegin(GL_QUADS);
+                glColor3f(1.0,1.0,1.0); //Red
+                glVertex2f( i->GetP1().GetX(), i->GetP1().GetY());
+                glVertex2f( i->GetP2().GetX(), i->GetP2().GetY());
+                glVertex2f( i->GetP3().GetX(), i->GetP3().GetY());
+                glVertex2f( i->GetP4().GetX(), i->GetP4().GetY());
+            glEnd();
+        } else {
+            i->DrawSquare(i->GetP1(), i->GetP2(), i->GetP3(), i->GetP4());
+        }
     }
 
     for(i=this->next.begin(); i!=this->next.end(); ++i){
@@ -23,7 +32,7 @@ void Tree::DrawNextLevel(){
     }
 }
 
-void Tree::AddNextLevel(){
+void Tree::AddLevel(){
     Pencil pen;
     std::vector<Square>::iterator level;
     std::vector<Square>::iterator stop;
@@ -111,5 +120,32 @@ void Tree::UndoLevel(){
         this->next.push_back(*level);
         this->archive.pop_back();
     }
+}
+
+Square Tree::SelectSquare(int x, int y){
+    double minDistance = DOUBLE_MAX;
+    double distance = 0;
+    Square square;
+    std::vector<Square>::iterator it;
+    for(it=this->archive.begin(); it!=this->archive.end(); ++it){
+        GLdouble dx = it->GetP1().GetX()-x;
+        GLdouble dy = it->GetP1().GetY()-y;
+        distance = sqrt(dx*dx + dy*dy);
+        if(distance < minDistance){
+            minDistance = distance;
+            square = (*it);
+        }
+    }
+
+    for(it=this->next.begin(); it!=this->next.end(); ++it){
+        GLdouble pxn1 = it->GetP1().GetX();
+        GLdouble pyn1 = it->GetP1().GetY();
+        distance = sqrt (pow(x-pxn1, 2) + pow(y-pyn1, 2));
+        if(distance < minDistance){
+            minDistance = distance;
+            square = (*it);
+        }
+    }
+    return square;
 }
  
