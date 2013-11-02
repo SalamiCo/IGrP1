@@ -172,10 +172,14 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
         yTop = (centerY+height/f/2);
         break;
 
-    //Tree++
+    //Tree ++
     case 'z':
         tree.AddNextLevel();
         break;
+
+    // Tree--
+    case 'x':
+        tree.UndoLevel();
     };
 
     glMatrixMode(GL_PROJECTION);

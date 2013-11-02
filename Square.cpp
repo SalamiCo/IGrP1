@@ -1,10 +1,11 @@
 #include "Square.h"
 
-Square::Square(PointCoord p1, PointCoord p2, PointCoord p3, PointCoord p4){
+Square::Square(PointCoord p1, PointCoord p2, PointCoord p3, PointCoord p4, int currLevel){
 	this->p1 = p1;
 	this->p2 = p2;
 	this->p3 = p3;
 	this->p4 = p4;
+	this->currLevel = currLevel;
 }
 
 PointCoord Square::GetP1(){
@@ -31,6 +32,10 @@ GLdouble Square::GetEdge(){
 
 GLdouble Square::GetAngle(){
 	return atan2(this->p1.GetY() - this->p2.GetY(), this->p1.GetX() - this->p2.GetX());
+}
+
+int Square::GetCurrLevel(){
+	return this->currLevel;
 }
 
 void Square::DrawSquare(PointCoord p1, PointCoord p2, PointCoord p3, PointCoord p4){
