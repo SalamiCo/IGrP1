@@ -32,10 +32,12 @@ private:	// User declarations
 	GLfloat displacementeIncrease;
 	//Acumulate zoom
 	GLfloat acumulateZoom;
-	//Tree variable
+	//Tree variables
  	Tree tree;
  	//Square selected
  	Square selectedSquare;
+ 	//Level
+ 	int lvl;
 
  	// Private methods
  	void __fastcall SetPixelFormatDescriptor();
