@@ -6,14 +6,14 @@
 
 class Square{
 	private:
-		PointCoord x1,x2,x3,x4;
+		PointCoord p1,p2,p3,p4;
 	public:
 		Square();
-		Square(PointCoord x1, PointCoord x2, PointCoord x3, PointCoord x4);
-        PointCoord GetX1();
-        PointCoord GetX2();
-        PointCoord GetX3();
-        PointCoord GetX4();
+		Square(PointCoord p1, PointCoord p2, PointCoord p3, PointCoord p4);
+        PointCoord GetP1();
+        PointCoord GetP2();
+        PointCoord GetP3();
+        PointCoord GetP4();
         GLdouble GetEdge();
         GLdouble GetAngle();
 };

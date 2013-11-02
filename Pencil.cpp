@@ -35,7 +35,6 @@ void Pencil::Forward(GLdouble dist){
 	GLdouble x = dist*cos(this->dir);
 	GLdouble y = dist*sin(this->dir);
     this->pos.SetX(pos.GetX() + x);
-    this->pos.SetY(pos.GetY() + y);
-    //glVertex2f(x,y);       
+    this->pos.SetY(pos.GetY() + y);     
 }
 
