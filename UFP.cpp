@@ -191,15 +191,22 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
 void __fastcall TGLForm2D::FormMouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
 {
-    // (0,0) is in up-left corner. X grows to the right, Y to the bottom
-    //ShowMessage("Mouse at (" + IntToStr(X) + ", " + IntToStr(Y) + ")");
+    switch(Button){
+        //Left button
+        case 0:
+            // (0,0) is in up-left corner. X grows to the right, Y to the bottom
+            //ShowMessage("Mouse at (" + IntToStr(X) + ", " + IntToStr(Y) + ")");
+            int newX, newY;
+            newX = X - xRight;
+            newY = yTop - Y;
+            //ShowMessage("Clicked at (" + IntToStr(newX) + ", " + IntToStr(newY) + ")");
+            this->tree = Tree(newX, newY);
+            break;
 
-    int newX, newY;
-    newX = X - xRight;
-    newY = yTop - Y;
-    //ShowMessage("Clicked at (" + IntToStr(newX) + ", " + IntToStr(newY) + ")");
-
-    this->tree = Tree(newX, newY);
+        //Right button
+        case 1:
+            break;
+    };
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
