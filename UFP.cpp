@@ -68,48 +68,46 @@ void __fastcall TGLForm2D::SetPixelFormatDescriptor()
 //---------------------------------------------------------------------
 void __fastcall TGLForm2D::FormResize(TObject *Sender)
 {
+    if ((ClientWidth<=1)||(ClientHeight<=1)){
+        ClientWidth=400;
+        ClientHeight=400;
+    }
 
- //se actualiza puerto de vista y su radio
-  if ((ClientWidth<=1)||(ClientHeight<=1)){
-     ClientWidth=400;
-     ClientHeight=400;
-  }
+    glViewport(0,0,ClientWidth,ClientHeight);
 
-  glViewport(0,0,ClientWidth,ClientHeight);
+    centerX = (xLeft + xRight) / 2.0;
+    xLeft = centerX - ((ClientWidth*acumulateZoom) / 2.0);
+    xRight = centerX + ((ClientWidth*acumulateZoom) / 2.0);
 
-  centerX = (xLeft + xRight) / 2.0;
-  xLeft = centerX - ((ClientWidth*acumulateZoom) / 2.0);
-  xRight = centerX + ((ClientWidth*acumulateZoom) / 2.0);
+    centerY = (yBot + yTop) / 2.0;
+    yBot = centerY - ((ClientHeight*acumulateZoom) / 2.0);
+    yTop = centerY + ((ClientHeight*acumulateZoom) / 2.0);
 
-  centerY = (yBot + yTop) / 2.0;
-  yBot = centerY - ((ClientHeight*acumulateZoom) / 2.0);
-  yTop = centerY + ((ClientHeight*acumulateZoom) / 2.0);
-
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluOrtho2D(xLeft,xRight,yBot,yTop);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(xLeft,xRight,yBot,yTop);
 
 
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-  GLScene();
-
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    GLScene();
 }
 //---------------------------------------------------------------------------
 void __fastcall TGLForm2D::GLScene()
 {
-glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
 
-// comandos para dibujar la escena
-tree.DrawNextLevel();
-glFlush();
-SwapBuffers(hdc);
+    // Draw the scene
+    tree.DrawNextLevel();
+
+    glFlush();
+    SwapBuffers(hdc);
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TGLForm2D::FormPaint(TObject *Sender)
 {
-  GLScene();
+    GLScene();
 }
 //---------------------------------------------------------------------------
 void __fastcall TGLForm2D::FormDestroy(TObject *Sender)
@@ -117,98 +115,99 @@ void __fastcall TGLForm2D::FormDestroy(TObject *Sender)
     ReleaseDC(Handle,hdc);
     wglMakeCurrent(NULL, NULL);
     wglDeleteContext(hrc);
-    // eliminar objetos creados
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
 {
-  GLdouble f = 0.9;
-  GLdouble width, height, centerX, centerY;
-  switch(Key){
+    GLdouble f = 0.9;
+    GLdouble width, height, centerX, centerY;
+
+    switch(Key){
     //Left
     case 'a':
-      xLeft += displacementeIncrease;
-      xRight += displacementeIncrease;
-      break;
+        xLeft += displacementeIncrease;
+        xRight += displacementeIncrease;
+        break;
     //Up
     case 'w':
-      yBot -= displacementeIncrease;
-      yTop -= displacementeIncrease;
-      break;
+        yBot -= displacementeIncrease;
+        yTop -= displacementeIncrease;
+        break;
     //Down
     case 's':
-      yBot += displacementeIncrease;
-      yTop += displacementeIncrease;
-      break;
+        yBot += displacementeIncrease;
+        yTop += displacementeIncrease;
+        break;
     //Right
     case 'd':
-      xLeft -= displacementeIncrease;
-      xRight -= displacementeIncrease;
-      break;
+        xLeft -= displacementeIncrease;
+        xRight -= displacementeIncrease;
+        break;
 
     //Zoom ++
     case '+':
-      width = xRight - xLeft;
-      height = yTop - yBot;
-      centerX = (xRight + xLeft) / 2;
-      centerY = (yTop + yBot) / 2;
-      acumulateZoom *= f;
+        width = xRight - xLeft;
+        height = yTop - yBot;
+        centerX = (xRight + xLeft) / 2;
+        centerY = (yTop + yBot) / 2;
+        acumulateZoom *= f;
 
-      xLeft = (centerX-width*f/2);
-      xRight = (centerX+width*f/2);
-      yBot = (centerY-height*f/2);
-      yTop = (centerY+height*f/2);
-      break;
+        xLeft = (centerX-width*f/2);
+        xRight = (centerX+width*f/2);
+        yBot = (centerY-height*f/2);
+        yTop = (centerY+height*f/2);
+        break;
     //Zoom --
     case '-':
-      width = xRight - xLeft;
-      height = yTop - yBot;
-      centerX = (xRight + xLeft) / 2;
-      centerY = (yTop + yBot) / 2;
-      acumulateZoom *= f;
+        width = xRight - xLeft;
+        height = yTop - yBot;
+        centerX = (xRight + xLeft) / 2;
+        centerY = (yTop + yBot) / 2;
+        acumulateZoom *= f;
 
-      xLeft = (centerX-width/f/2);
-      xRight = (centerX+width/f/2);
-      yBot = (centerY-height/f/2);
-      yTop = (centerY+height/f/2);
-      break;
+        xLeft = (centerX-width/f/2);
+        xRight = (centerX+width/f/2);
+        yBot = (centerY-height/f/2);
+        yTop = (centerY+height/f/2);
+        break;
+
     //Tree++
     case 'z':
-      tree.AddNextLevel();
-      break;
-  };
+        tree.AddNextLevel();
+        break;
+    };
 
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluOrtho2D(xLeft,xRight,yBot,yTop);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(xLeft,xRight,yBot,yTop);
 
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-  GLScene();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    GLScene();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TGLForm2D::FormMouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
 {
-  // (0,0) is in up-left corner. X grows to the right, Y to the bottom
-  //ShowMessage("Mouse at (" + IntToStr(X) + ", " + IntToStr(Y) + ")");
-  
-  int newX, newY;
-  newX = X - xRight;
-  newY = yTop - Y;
-  //ShowMessage("Clicked at (" + IntToStr(newX) + ", " + IntToStr(newY) + ")");
+    // (0,0) is in up-left corner. X grows to the right, Y to the bottom
+    //ShowMessage("Mouse at (" + IntToStr(X) + ", " + IntToStr(Y) + ")");
 
-  this->tree = Tree(newX, newY);
+    int newX, newY;
+    newX = X - xRight;
+    newY = yTop - Y;
+    //ShowMessage("Clicked at (" + IntToStr(newX) + ", " + IntToStr(newY) + ")");
 
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluOrtho2D(xLeft,xRight,yBot,yTop);
+    this->tree = Tree(newX, newY);
 
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-  GLScene();
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(xLeft,xRight,yBot,yTop);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    GLScene();
 }
 //---------------------------------------------------------------------------
 
