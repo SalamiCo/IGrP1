@@ -38,6 +38,7 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
 
     //Scene inicialization
     this->tree = Tree();
+    lvl = 0;
 
     // inicialización de las variables del programa
     displacementeIncrease = 10;
@@ -174,12 +175,17 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
 
     //Tree ++
     case 'z':
+        lvl++;
         tree.AddNextLevel();
         break;
 
     // Tree--
     case 'x':
-        tree.UndoLevel();
+        if(lvl!=0){
+            lvl--;
+            tree.UndoLevel();
+        }
+        break;
     };
 
     glMatrixMode(GL_PROJECTION);

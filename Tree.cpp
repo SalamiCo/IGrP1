@@ -106,7 +106,7 @@ void Tree::UndoLevel(){
     level = this->archive.rbegin();
     currLevel = level->GetCurrLevel();
     squareLevel = pow(2,currLevel);
-
+    
     for(int i=1; i<=squareLevel; ++level, ++i){
         this->next.push_back(*level);
         this->archive.pop_back();
