@@ -13,30 +13,26 @@ Tree::Tree(int X, int Y){
 
 void Tree::DrawTree(Square selectedSquare){
     std::vector<Square>::iterator i;
+    int lvl;
+
     for(i=this->archive.begin(); i!=this->archive.end(); ++i){
         if((*i).SquareEqual(selectedSquare.GetP1(), selectedSquare.GetP2(), selectedSquare.GetP3(), selectedSquare.GetP4())){
-            glBegin(GL_QUADS);
-                glColor3f(1.0,1.0,1.0); //Red
-                glVertex2f( i->GetP1().GetX(), i->GetP1().GetY());
-                glVertex2f( i->GetP2().GetX(), i->GetP2().GetY());
-                glVertex2f( i->GetP3().GetX(), i->GetP3().GetY());
-                glVertex2f( i->GetP4().GetX(), i->GetP4().GetY());
-            glEnd();
+            glColor3f(1.0,1.0,1.0); //White  
+            i->DrawSquare(i->GetP1(), i->GetP2(), i->GetP3(), i->GetP4());
         } else {
+            lvl = i->GetCurrLevel();
+            TreeColors(lvl);
             i->DrawSquare(i->GetP1(), i->GetP2(), i->GetP3(), i->GetP4());
         }
     }
 
     for(i=this->next.begin(); i!=this->next.end(); ++i){
         if((*i).SquareEqual(selectedSquare.GetP1(), selectedSquare.GetP2(), selectedSquare.GetP3(), selectedSquare.GetP4())){
-            glBegin(GL_QUADS);
-                glColor3f(1.0,1.0,1.0); //Red
-                glVertex2f( i->GetP1().GetX(), i->GetP1().GetY());
-                glVertex2f( i->GetP2().GetX(), i->GetP2().GetY());
-                glVertex2f( i->GetP3().GetX(), i->GetP3().GetY());
-                glVertex2f( i->GetP4().GetX(), i->GetP4().GetY());
-            glEnd();
+            glColor3f(1.0,1.0,1.0); //White
+            i->DrawSquare(i->GetP1(), i->GetP2(), i->GetP3(), i->GetP4());
         } else {
+            lvl = i->GetCurrLevel();
+            TreeColors(lvl);
             i->DrawSquare(i->GetP1(), i->GetP2(), i->GetP3(), i->GetP4());
         }   
     }
@@ -173,5 +169,17 @@ Square Tree::SelectSquare(int x, int y){
         }
     }
     return square;
+}
+
+void Tree::TreeColors(int lvl){
+    if(lvl == 0){
+        glColor3f(0.38, 0.19, 0.0); // Brown
+    } else if(lvl <= 3){
+        glColor3f(0.61, 0.31, 0.0); // Light brown
+    } else if(lvl <= 5){
+        glColor3f(0.0, 0.25, 0.0); // Dark Green
+    } else if(lvl > 5 ){
+        glColor3f(0.0, 0.73, 0.0); // Light green
+    }
 }
  

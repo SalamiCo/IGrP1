@@ -48,13 +48,9 @@ int Square::GetCurrLevel(){
 
 void Square::DrawSquare(PointCoord p1, PointCoord p2, PointCoord p3, PointCoord p4){
 	glBegin(GL_QUADS);
-        glColor3f(1.0,0.0,0.0); //Red
         glVertex2f( p1.GetX(), p1.GetY());
-        glColor3f(0.0,1.0,0.0); //Green
         glVertex2f( p2.GetX(), p2.GetY());
-        glColor3f(0.0,0.0,1.0); //Blue
         glVertex2f( p3.GetX(), p3.GetY());
-        glColor3f(1.0,0.0,1.0); //Purple
         glVertex2f( p4.GetX(), p4.GetY());
     glEnd();
 }

@@ -20,6 +20,7 @@ class Tree{
 		void AddLevel();
 		void UndoLevel();
 		Square SelectSquare(int x, int y);
+		void TreeColors(int lvl);
 };
 
 #endif
