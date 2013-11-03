@@ -1,3 +1,5 @@
+//Samuel Mendez Galán
+//Pedro Morgado Alarcón
 //---------------------------------------------------------------------------
 
 #include <vcl.h>

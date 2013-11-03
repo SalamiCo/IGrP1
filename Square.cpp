@@ -1,3 +1,6 @@
+//Samuel Mendez Galán
+//Pedro Morgado Alarcón
+
 #include "Square.h"
 
 Square::Square(){
