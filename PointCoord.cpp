@@ -27,5 +27,5 @@ void PointCoord::SetY(GLdouble y){
 }
 
 bool PointCoord::PointCoordEqual(GLdouble x, GLdouble y){
-	return (this->x == x, this->y == y);
+	return (this->x == x && this->y == y);
 }

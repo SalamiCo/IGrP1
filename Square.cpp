@@ -60,6 +60,6 @@ void Square::DrawSquare(PointCoord p1, PointCoord p2, PointCoord p3, PointCoord 
 }
 
 bool Square::SquareEqual(PointCoord p1, PointCoord p2, PointCoord p3, PointCoord p4){
-	return (this->p1.PointCoordEqual(p1.GetX(), p1.GetY()) && this->p2.PointCoordEqual(p2.GetX(), p2.GetY()), this->p3.PointCoordEqual(p3.GetX(), p3.GetY()) && this->p4.PointCoordEqual(p4.GetX(), p4.GetY()));
+	return (this->p1.PointCoordEqual(p1.GetX(), p1.GetY()) && this->p2.PointCoordEqual(p2.GetX(), p2.GetY()) && this->p3.PointCoordEqual(p3.GetX(), p3.GetY()) && this->p4.PointCoordEqual(p4.GetX(), p4.GetY()));
 }
  
