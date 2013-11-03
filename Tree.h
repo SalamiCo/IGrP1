@@ -6,6 +6,7 @@
 #include <vector>
 #include <iostream>
 #include <math.h>
+#include <algorithm>
 #include "Square.h"
 #include "Pencil.h"
 

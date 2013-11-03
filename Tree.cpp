@@ -133,27 +133,42 @@ void Tree::UndoLevel(){
 }
 
 Square Tree::SelectSquare(int x, int y){
-    GLdouble minDistance = DOUBLE_MAX;
-    GLdouble distance = 0;
+    GLdouble x1, x2, x3, x4, y1, y2, y3, y4;
+    GLdouble minX, maxX, minY, maxY;
     Square square;
-    GLdouble dx, dy;
     std::vector<Square>::iterator it;
     for(it=this->archive.begin(); it!=this->archive.end(); ++it){
-        dx = it->GetP1().GetX();
-        dy = it->GetP1().GetY();
-        distance = sqrt(pow(dx-x,2) + pow(dy-y,2));
-        if(distance < minDistance){
-            minDistance = distance;
+        x1 = it->GetP1().GetX();
+        x2 = it->GetP2().GetX();
+        x3 = it->GetP3().GetX();
+        x4 = it->GetP4().GetX();
+        y1 = it->GetP1().GetY();
+        y2 = it->GetP2().GetY();
+        y3 = it->GetP3().GetY();
+        y4 = it->GetP4().GetY();
+        minX = std::min(std::min(x1, x2), std::min(x3, x4));
+        maxX = std::max(std::max(x1, x2), std::max(x3, x4));
+        minY = std::min(std::min(y1, y2), std::min(y3, y4));
+        maxY = std::max(std::max(y1, y2), std::max(y3, y4));
+        if(x>minX && x<maxX && y>minY && y<maxY){
             square = (*it);
         }
     }
 
     for(it=this->next.begin(); it!=this->next.end(); ++it){
-        dx = it->GetP1().GetX()-x;
-        dy = it->GetP1().GetY()-y;
-        distance = sqrt(pow(x-dx,2) + pow(y-dy,2));
-        if(distance < minDistance){
-            minDistance = distance;
+        x1 = it->GetP1().GetX();
+        x2 = it->GetP2().GetX();
+        x3 = it->GetP3().GetX();
+        x4 = it->GetP4().GetX();
+        y1 = it->GetP1().GetY();
+        y2 = it->GetP2().GetY();
+        y3 = it->GetP3().GetY();
+        y4 = it->GetP4().GetY();
+        minX = std::min(std::min(x1, x2), std::min(x3, x4));
+        maxX = std::max(std::max(x1, x2), std::max(x3, x4));
+        minY = std::min(std::min(y1, y2), std::min(y3, y4));
+        maxY = std::max(std::max(y1, y2), std::max(y3, y4));
+        if(x>minX && x<maxX && y>minY && y<maxY){
             square = (*it);
         }
     }

@@ -216,7 +216,11 @@ void __fastcall TGLForm2D::FormMouseDown(TObject *Sender,
 
         //Right button
         case 1:
-            selectedSquare = tree.SelectSquare(X,Y);
+            GLdouble w = (ClientWidth / (xRight - xLeft));
+            GLdouble h = (ClientHeight / (yTop - yBot));
+            GLdouble xp = xLeft + (X / w);
+            GLdouble yp = yTop - (Y / h);
+            selectedSquare = tree.SelectSquare(xp,yp);
             break;
     };
 
