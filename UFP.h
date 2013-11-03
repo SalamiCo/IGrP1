@@ -8,6 +8,8 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 
+#include <stdlib.h>
+
 #include "Tree.h"
 
 //---------------------------------------------------------------------------
@@ -38,11 +40,16 @@ private:	// User declarations
  	Square selectedSquare;
  	//Level
  	int lvl;
+ 	//Embaldosar
+ 	bool baldosas;
+ 	AnsiString input;
 
  	// Private methods
  	void __fastcall SetPixelFormatDescriptor();
  	void __fastcall GLScene();
  	void Draw();
+ 	void Embaldosar(int nCol);
+ 	void Desembaldosar();
 
  	public:		// User declarations
    		__fastcall TGLForm2D(TComponent* Owner);

@@ -39,6 +39,7 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     //Scene inicialization
     this->tree = Tree();
     lvl = 0;
+    baldosas = false;
 
     // inicialización de las variables del programa
     displacementeIncrease = 10;
@@ -98,8 +99,12 @@ void __fastcall TGLForm2D::GLScene()
 {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // Draw the scene
-    tree.DrawTree(selectedSquare);
+    if(baldosas){
+        Embaldosar(atoi(input.c_str()));
+    } else {
+        // Draw the scene
+        tree.DrawTree(selectedSquare);
+    }
 
     glFlush();
     SwapBuffers(hdc);
@@ -186,6 +191,18 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
             tree.UndoLevel();
         }
         break;
+
+    // Baldosas
+    case 'b':
+        baldosas = true;
+        input = InputBox("Numero de columnas para embaldosado", "Introduzca el numero de columnas deseadas (>1): ", "3"); //3 por defecto
+        if(input < 2) input = 3;
+        break;
+
+    case 'n':
+        baldosas = false;
+        Desembaldosar();
+        break;
     };
 
     glMatrixMode(GL_PROJECTION);
@@ -234,3 +251,22 @@ void __fastcall TGLForm2D::FormMouseDown(TObject *Sender,
 }
 //---------------------------------------------------------------------------
 
+void TGLForm2D::Embaldosar(int nCol){
+    GLdouble SAVratio = (xRight - xLeft) / (yTop - yBot);
+    GLdouble w = (GLdouble) ClientWidth / (GLdouble) nCol;
+    GLdouble h = w / SAVratio;
+
+    for(GLint c=0; c<nCol; c++){
+        GLdouble currentH = 0;
+        while((currentH + h) < ClientHeight){
+            glViewport((GLint)(c*w), (GLint)currentH, (GLint)w, (GLint)h);
+            // Draw the scene
+            tree.DrawTree(selectedSquare);
+            currentH += h;
+        }
+    }
+}
+
+void TGLForm2D::Desembaldosar(){
+    glViewport(0,0,ClientWidth,ClientHeight);
+}
