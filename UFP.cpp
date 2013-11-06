@@ -173,7 +173,7 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
         height = yTop - yBot;
         centerX = (xRight + xLeft) / 2;
         centerY = (yTop + yBot) / 2;
-        acumulateZoom *= f;
+        acumulateZoom /= f;
 
         xLeft = (centerX-width/f/2);
         xRight = (centerX+width/f/2);
